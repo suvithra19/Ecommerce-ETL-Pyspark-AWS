@@ -13,17 +13,6 @@ An e-commerce company wants a dashboard to monitor:
 - Monthly revenue growth.
 - Cancelled and returned orders.
 
-The gold layer answers each requirement:
-
-| Requirement | Gold table | How it is answered |
-|---|---|---|
-| Daily sales revenue | `gold` | Sum `total_price` by `order_date` for Completed orders |
-| Total orders | `monthly_revenue` | `total_orders` for each month |
-| Top-selling products | `top_selling_products` | Highest-revenue product in each category |
-| Customer purchase behaviour | `customer_revenue` | Number of orders and revenue for each customer |
-| Monthly revenue growth | `monthly_revenue` | Compare each month's `monthly_revenue` with the previous month |
-| Cancelled and returned orders | `return_rate`, `gold` | `return_rate` gives returned units by category. Cancelled orders come from `gold` where `status = 'Cancelled'` |
-
 ## Architecture
 
 ```mermaid
@@ -44,7 +33,6 @@ flowchart LR
 
 ## Tech stack
 
-- **PySpark 3.5+** (uses `try_to_timestamp`)
 - **Amazon EC2** with a Spark virtual environment to run the processing
 - **Amazon S3** for storage, accessed from Spark through the `s3a://` connector (`hadoop-aws`)
 - **Amazon Athena** (serverless SQL over S3) with tables defined by `CREATE EXTERNAL TABLE`
