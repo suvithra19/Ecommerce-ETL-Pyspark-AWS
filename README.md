@@ -59,9 +59,7 @@ The raw files contain realistic problems. Each one has an explicit rule:
 | Missing `quantity`, or quantity of 0 or less | Row dropped |
 | Zero, negative or missing `unit_price` | Treated as missing, then filled from the product's list price. Rows with no price at all are dropped |
 | Items whose `product_id` is not in the products table | Kept (a sale is still a sale) with category `unknown` and product name `Unknown Product` |
-| Missing brand, status, payment method or shipping city | Filled with `not specified` or `Unknown` |
 | Invalid email format | Replaced with `invalid` |
-| Zero or negative `annual_income` | Set to null |
 
 ## Gold tables
 
