@@ -119,13 +119,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS ecommerce_gold.gold (
 )
 PARTITIONED BY (`year` int)
 STORED AS PARQUET
-LOCATION 's3://suvithra-gold/e-commerce/gold/'
-TBLPROPERTIES (
-  'projection.enabled'='true',
-  'projection.year.type'='integer',
-  'projection.year.range'='2024,2030',
-  'storage.location.template'='s3://suvithra-gold/e-commerce/gold/year=${year}'
-);
+LOCATION 's3://suvithra-gold/e-commerce/gold/';
 
 CREATE EXTERNAL TABLE IF NOT EXISTS ecommerce_gold.monthly_revenue (
   `year` int, `month` int, monthly_revenue double, total_orders bigint
